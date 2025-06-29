@@ -1,4 +1,4 @@
-{config, ...}: let
+{lib, config, ...}: let
   browser = ["firefox.desktop"];
 
   # XDG MIME types
@@ -23,6 +23,7 @@
     "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
   };
 in {
+  xdg.configFile."mimeapps.list" = lib.mkIf config.xdg.mimeApps.enable { force = true; };
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
