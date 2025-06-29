@@ -52,6 +52,7 @@ bindsym Mod4+Shift+k move up
 bindsym Mod4+Shift+l move right
 bindsym Mod4+Shift+minus move scratchpad
 bindsym Mod4+Shift+q kill
+bindsym Mod4+Shift+s exec slurp | grim -g - - | wl-copy
 bindsym Mod4+Shift+space floating toggle
 bindsym Mod4+Up focus up
 bindsym Mod4+a focus parent
@@ -84,11 +85,11 @@ mode "resize" {
 }
 
 bar {
-  font pango:monospace 8.000000
+  font pango:Noto Sans Regular 10
   mode dock
   hidden_state hide
   position bottom
-  status_command /nix/store/nxx6kbn7wgyy9d6sw3h0lf0vybz9lql0-i3status-2.15/bin/i3status
+  status_command i3blocks -c ~/.config/sway/i3blocks.conf
   swaybar_command /nix/store/wjlm7bsi9zcvg5rmwpbdr91k8sn9sa9q-sway-1.10.1/bin/swaybar
   workspace_buttons yes
   strip_workspace_numbers no
@@ -105,8 +106,11 @@ bar {
   }
 }
 
-exec firefox
+exec zen
 
 exec "/nix/store/rys6134aqazihxi4g5ayc0ky829v7mf0-dbus-1.14.10/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIXOS_OZONE_WL XCURSOR_THEME XCURSOR_SIZE; systemctl --user reset-failed && systemctl --user start sway-session.target && swaymsg -mt subscribe '[]' || true && systemctl --user stop sway-session.target"
 
 output * bg ~/.config/sway/wp.jpg fill
+
+gaps inner 10
+gaps outer 10

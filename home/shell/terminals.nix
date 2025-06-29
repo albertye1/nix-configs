@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 # terminals
-let 
+let
   font = "JetBrainsMono Nerd Font";
 in
 {

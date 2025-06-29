@@ -5,6 +5,7 @@
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # follows is used for inheritance.
@@ -12,30 +13,36 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, catppuccin, home-manager, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations = {
       decibel = let
         username = "aly";
-	specialArgs = {inherit inputs username;};
+       	specialArgs = {inherit inputs username;};
       in
         nixpkgs.lib.nixosSystem {
-	  inherit specialArgs;
+       	  inherit specialArgs;
           system = "x86_64-linux";
           # set all inputs parameters as special arguments
           modules = [
-	    ./hosts/decibel
-	    ./users/${username}/nixos.nix
+       	    ./hosts/decibel
+       	    ./users/${username}/nixos.nix
+            catppuccin.nixosModules.catppuccin
 
-	    home-manager.nixosModules.home-manager
-	    {
-	      home-manager.useGlobalPkgs = true;
-	      home-manager.useUserPackages = true;
-	      home-manager.backupFileExtension = "backup";
+       	    home-manager.nixosModules.home-manager
+       	    {
+       	      home-manager.useGlobalPkgs = true;
+       	      home-manager.useUserPackages = true;
+       	      home-manager.backupFileExtension = "backup";
 
-	      home-manager.extraSpecialArgs = inputs // specialArgs;
-	      home-manager.users.aly = import ./users/${username}/home.nix;
-	    }
+       	      home-manager.extraSpecialArgs = inputs // specialArgs;
+       	      home-manager.users.${username} = {
+                imports = [
+                  ./users/${username}/home.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+       	    }
           ];
         };
     };

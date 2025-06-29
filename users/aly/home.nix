@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, catppuccin, ... }:
 
 {
   imports = [
@@ -7,7 +7,11 @@
     ../../home/shell
     ../../home/sway
     ../../home/utils
+    ../../home/zed
   ];
+
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
 
   # basic configuration of git
   programs.git = {

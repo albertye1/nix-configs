@@ -1,5 +1,5 @@
 {lib, config, ...}: let
-  browser = ["firefox.desktop"];
+  browser = ["userapp-Zen-Z1DN82.desktop"];
 
   # XDG MIME types
   associations = {
@@ -42,4 +42,3 @@ in {
     };
   };
 }
-

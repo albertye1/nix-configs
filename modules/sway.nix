@@ -7,6 +7,7 @@
     upower
     wayland-utils
     wl-clipboard
+    i3blocks
   ];
   programs.sway = {
     enable = true;

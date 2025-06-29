@@ -21,6 +21,10 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
+    # 1password
+    _1password-cli
+    _1password-gui
+
     # networking tools
     mtr # A network diagnostic tool
     iperf3
@@ -72,6 +76,13 @@
     nodePackages.npm
     nodePackages.pnpm
     yarn
+
+    # code editor
+    zed-editor
+
+    # social
+    signal-desktop
+    discord-canary
   ];
 
   services = {
