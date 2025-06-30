@@ -101,6 +101,7 @@
     lm_sensors
     fastfetch
     ranger
+    nushell
   ];
 
   security.rtkit.enable = true;

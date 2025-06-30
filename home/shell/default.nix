@@ -4,6 +4,8 @@
   cache = config.xdg.cacheHome;
 in {
   imports = [
+    ./nushell
+    ./common.nix
     ./starship.nix
     ./terminals.nix
   ];
@@ -28,5 +30,9 @@ in {
 
   home.shellAliases = {
     k = "kubectl";
+    ga = "git add -A";
+    gc = "git commit";
+    gp = "git push";
+    gl = "git pull";
   };
 }
