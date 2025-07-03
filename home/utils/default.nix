@@ -1,4 +1,4 @@
-{
+{ catppuccin, config, ... }: {
   imports = [
     ./browsers.nix
     ./common.nix

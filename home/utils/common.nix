@@ -85,6 +85,13 @@
     discord-canary
   ];
 
+  programs = {
+    btop.enable = true;
+    neovim.enable = true;
+  };
+
+  gtk.enable = true;
+
   services = {
     udiskie.enable = true;
   };

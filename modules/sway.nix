@@ -1,6 +1,6 @@
 {config, pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    swaylock-effects
+    swaylock
     grim
     slurp
     mako
