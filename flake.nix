@@ -45,6 +45,35 @@
        	    }
           ];
         };
+      saphira = let
+        username = "aly";
+       	specialArgs = {inherit inputs username;};
+      in
+        nixpkgs.lib.nixosSystem {
+       	  inherit specialArgs;
+          system = "x86_64-linux";
+          # set all inputs parameters as special arguments
+          modules = [
+       	    ./hosts/saphira
+       	    ./users/${username}/nixos.nix
+            catppuccin.nixosModules.catppuccin
+
+       	    home-manager.nixosModules.home-manager
+       	    {
+       	      home-manager.useGlobalPkgs = true;
+       	      home-manager.useUserPackages = true;
+       	      home-manager.backupFileExtension = "backup";
+
+       	      home-manager.extraSpecialArgs = inputs // specialArgs;
+       	      home-manager.users.${username} = {
+                imports = [
+                  ./users/${username}/home.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+       	    }
+          ];
+        };
     };
   };
 }

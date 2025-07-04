@@ -97,15 +97,17 @@
         outer = 10;
       };
 
+      input = {
+        "type:touchpad" = {
+          natural_scroll = "enabled";
+        };
+      };
+
       output = {
         "*" = {
           bg = "~/.config/sway/wp.jpg fill";
         };
       };
-
-      startup = [
-        { command = "zen"; }
-      ];
     };
     wrapperFeatures = {
       gtk = true;
