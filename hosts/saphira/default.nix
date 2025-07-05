@@ -7,6 +7,8 @@
     ../../modules/system.nix
     # pc runs sway
     ../../modules/sway.nix
+    # pc also runs kde
+    ../../modules/kde.nix
     # pc hardware settings
     ./hardware-configuration.nix
   ];

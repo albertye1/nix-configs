@@ -5,6 +5,7 @@
     ../../home/core.nix
 
     ../../home/shell
+    ../../home/kde
     ../../home/sway
     ../../home/utils
     ../../home/zed

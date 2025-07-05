@@ -11,9 +11,14 @@
       # follows is used for inheritance.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, catppuccin, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, catppuccin, home-manager, plasma-manager, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations = {
       decibel = let
@@ -36,6 +41,7 @@
        	      home-manager.backupFileExtension = "backup";
 
        	      home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
        	      home-manager.users.${username} = {
                 imports = [
                   ./users/${username}/home.nix
@@ -65,6 +71,7 @@
        	      home-manager.backupFileExtension = "backup";
 
        	      home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
        	      home-manager.users.${username} = {
                 imports = [
                   ./users/${username}/home.nix

@@ -35,4 +35,5 @@ in {
     gp = "git push";
     gl = "git pull";
   };
+  programs.bash.enable = true;
 }
