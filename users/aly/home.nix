@@ -1,11 +1,11 @@
-{ config, pkgs, catppuccin, ... }:
+{ config, pkgs, catppuccin, inputs, ... }:
 
 {
   imports = [
     ../../home/core.nix
 
-    ../../home/shell
     ../../home/kde
+    ../../home/shell
     ../../home/sway
     ../../home/utils
     ../../home/zed

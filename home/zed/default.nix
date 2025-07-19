@@ -36,6 +36,8 @@
                 npm_path = lib.getExe' pkgs.nodejs "npm";
             };
 
+            tab_size = 2;
+
             hour_format = "hour24";
             auto_update = false;
             terminal = {
@@ -93,7 +95,6 @@
                     };
                 };
             };
-
 
             languages = {
                 "Elixir" = {

@@ -1,5 +1,17 @@
 { config, pkgs, ... }: {
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true; services.xserver.desktopManager.gnome.enable = true;
+  environment.systemPackages = with pkgs; [
+    sddm-astronaut
+  ];
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "sddm-astronaut-theme";
+    extraPackages = with pkgs.kdePackages; [
+      qtsvg
+      qtmultimedia
+      qtvirtualkeyboard
+    ];
+  };
+  services.desktopManager.plasma6.enable = true;
 }

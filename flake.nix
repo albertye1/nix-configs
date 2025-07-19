@@ -16,14 +16,37 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    firefox-addons =
+    {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, catppuccin, home-manager, plasma-manager, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    catppuccin,
+    home-manager,
+    plasma-manager,
+    firefox-addons,
+    ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations = {
       decibel = let
         username = "aly";
-       	specialArgs = {inherit inputs username;};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+          };
+        };
+       	specialArgs = {
+          inherit inputs username;
+          firefox-addons-nonfree = pkgs.callPackage firefox-addons { };
+        };
       in
         nixpkgs.lib.nixosSystem {
        	  inherit specialArgs;
@@ -53,7 +76,17 @@
         };
       saphira = let
         username = "aly";
-       	specialArgs = {inherit inputs username;};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+          };
+        };
+       	specialArgs = {
+          inherit inputs username;
+          firefox-addons-nonfree = pkgs.callPackage firefox-addons { };
+        };
       in
         nixpkgs.lib.nixosSystem {
        	  inherit specialArgs;

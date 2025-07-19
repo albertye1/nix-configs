@@ -22,10 +22,17 @@ username,
         disableWhileTyping = true;
         naturalScroll = true;
         middleButtonEmulation = true;
-        vendorId = "093a";
-        productId = "3012";
-        name = "ASUP1207:00 093A:3012 Touchpad";
+        # change these values for each laptop or find a better way to replicate this?
+        vendorId = "0488";
+        productId = "104b";
+        name = "VEN_0488:00 0488:104B Touchpad";
       }
     ];
+
+    hotkeys.commands."launch-konsole" = {
+      name = "Launch Konsole";
+      key = "Ctrl+Alt+T";
+      command = "kitty";
+    };
   };
 }

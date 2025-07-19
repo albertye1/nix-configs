@@ -34,6 +34,8 @@ in {
     gc = "git commit";
     gp = "git push";
     gl = "git pull";
+
+    rmbak = "find . -name \"*.backup\" -type f -delete";
   };
   programs.bash.enable = true;
 }
