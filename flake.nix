@@ -114,6 +114,24 @@
        	    }
           ];
         };
+      florinia = let
+        username = "aly";
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+       	specialArgs = {
+          inherit inputs username;
+        };
+      in
+        nixpkgs.lib.nixosSystem {
+       	  inherit specialArgs;
+          system = "x86_64-linux";
+          # set all inputs parameters as special arguments
+          modules = [
+       	    ./hosts/florinia
+       	    ./users/${username}/nixos.nix
+          ];
+        };
     };
   };
 }

@@ -8,7 +8,7 @@
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
   nix.settings.trusted-users = [username];
@@ -18,6 +18,8 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  virtualisation.docker.enable = true;
 
   # set time zone
   time.timeZone = "America/Los_Angeles";
