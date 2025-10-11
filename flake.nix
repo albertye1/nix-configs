@@ -5,7 +5,7 @@
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # follows is used for inheritance.
@@ -64,7 +64,7 @@
        	      home-manager.backupFileExtension = "backup";
 
        	      home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.sharedModules = [plasma-manager.homeModules.plasma-manager];
        	      home-manager.users.${username} = {
                 imports = [
                   ./users/${username}/home.nix

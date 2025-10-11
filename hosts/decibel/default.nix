@@ -7,6 +7,8 @@
     ../../modules/system.nix
     # pc runs sway
     ../../modules/sway.nix
+    # pc also runs kde
+    ../../modules/kde.nix
     # pc contains nvidia gpu
     ../../modules/nvidia.nix
     # pc hardware settings
@@ -26,6 +28,7 @@
 
   # enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
 
   system.stateVersion = "25.05";
 }
