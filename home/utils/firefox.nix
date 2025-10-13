@@ -11,6 +11,15 @@
             "browser.startup.homepage" = "https://albie.cat";
             "browser.search.defaultenginename" = "DuckDuckGo";
             "browser.search.order.1" = "DuckDuckGo";
+	    "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+            "browser.newtabpage.activity-stream.feeds.snippets" = false;
+            "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+            "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = false;
+            "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = false;
+            "browser.newtabpage.activity-stream.section.highlights.includeVisited" = false;
+            "browser.newtabpage.activity-stream.showSponsored" = false;
+            "browser.newtabpage.activity-stream.system.showSponsored" = false;
+            "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
           };
           search = {
             force = true;
@@ -44,11 +53,14 @@
               "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
             };
           };
-          extensions = with firefox-addons-nonfree; [
-            ublock-origin
-            onepassword-password-manager
-            privacy-badger
-          ];
+          extensions = {
+	    force = true;
+	    packages = with firefox-addons-nonfree; [
+              ublock-origin
+              onepassword-password-manager
+              privacy-badger
+            ];
+	  };
         };
       };
     };
