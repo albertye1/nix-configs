@@ -55,7 +55,6 @@
     # productivity
     glow # markdown previewer in terminal
     obsidian
-
     btop  # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
@@ -83,6 +82,10 @@
     # social
     signal-desktop
     discord-canary
+    spotify
+
+    # photo stuff
+    darktable
   ];
 
   programs = {

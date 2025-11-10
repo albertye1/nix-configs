@@ -5,7 +5,7 @@
         enable = true;
 
         ## This populates the userSettings "auto_install_extensions"
-        extensions = ["nix" "toml" "elixir" "make"];
+        extensions = ["nix" "toml" "elixir" "make" "svelte"];
 
         ## everything inside of these brackets are Zed options.
         userSettings = {
