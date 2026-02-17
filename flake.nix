@@ -4,6 +4,7 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix/release-25.05";
     home-manager = {
@@ -27,6 +28,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-wsl,
     catppuccin,
     home-manager,
     plasma-manager,
@@ -130,6 +132,38 @@
           modules = [
        	    ./hosts/florinia
        	    ./users/${username}/nixos.nix
+          ];
+        };
+      terra = let
+        username = "nixos";
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+       	specialArgs = {
+          inherit inputs username;
+        };
+      in
+        nixpkgs.lib.nixosSystem {
+       	  inherit specialArgs;
+          system = "x86_64-linux";
+          # set all inputs parameters as special arguments
+          modules = [
+            nixos-wsl.nixosModules.default
+       	    ./hosts/terra
+       	    ./users/${username}/nixos.nix
+            home-manager.nixosModules.home-manager
+       	    {
+       	      home-manager.useGlobalPkgs = true;
+       	      home-manager.useUserPackages = true;
+       	      home-manager.backupFileExtension = "backup";
+
+       	      home-manager.extraSpecialArgs = inputs // specialArgs;
+       	      home-manager.users.${username} = {
+                imports = [
+                  ./users/${username}/home.nix
+                ];
+              };
+       	    }
           ];
         };
     };
