@@ -3,7 +3,7 @@
 {
   imports = [
     ../../home/core.nix
-
+    ../../home/wsl
     ../../home/shell
   ];
 
