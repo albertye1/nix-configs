@@ -2,13 +2,13 @@
   description = "aly nixos flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # NixOS official package source, using the nixos-25.11 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       # follows is used for inheritance.
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -17,12 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    firefox-addons =
-    {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    firefox-addons.url = "github:osipog/nix-firefox-addons";
   };
 
   outputs = {
@@ -40,14 +35,9 @@
         username = "aly";
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-            allowUnfreePredicate = _: true;
-          };
         };
        	specialArgs = {
           inherit inputs username;
-          firefox-addons-nonfree = pkgs.callPackage firefox-addons { };
         };
       in
         nixpkgs.lib.nixosSystem {
@@ -80,14 +70,9 @@
         username = "aly";
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-            allowUnfreePredicate = _: true;
-          };
         };
        	specialArgs = {
           inherit inputs username;
-          firefox-addons-nonfree = pkgs.callPackage firefox-addons { };
         };
       in
         nixpkgs.lib.nixosSystem {
@@ -106,7 +91,7 @@
        	      home-manager.backupFileExtension = "backup";
 
        	      home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.sharedModules = [plasma-manager.homeModules.plasma-manager];
        	      home-manager.users.${username} = {
                 imports = [
                   ./users/${username}/home.nix

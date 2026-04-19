@@ -72,8 +72,6 @@
 
     # web stuff
     nodejs
-    nodePackages.npm
-    nodePackages.pnpm
     yarn
 
     # code editor

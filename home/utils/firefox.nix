@@ -1,4 +1,4 @@
-{ inputs, options, config, lib, pkgs, username, firefox-addons-nonfree, ... }:
+{ inputs, options, config, lib, pkgs, username, firefox-addons, ... }:
 {
     programs.firefox = {
       enable = true;
@@ -11,7 +11,7 @@
             "browser.startup.homepage" = "https://albie.cat";
             "browser.search.defaultenginename" = "DuckDuckGo";
             "browser.search.order.1" = "DuckDuckGo";
-	    "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+            "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
             "browser.newtabpage.activity-stream.feeds.snippets" = false;
             "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
             "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = false;
@@ -55,11 +55,6 @@
           };
           extensions = {
 	    force = true;
-	    packages = with firefox-addons-nonfree; [
-              ublock-origin
-              onepassword-password-manager
-              privacy-badger
-            ];
 	  };
         };
       };

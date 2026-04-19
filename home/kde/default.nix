@@ -4,7 +4,7 @@ pkgs,
 username,
 ...
 }: {
-  home.file.".config/kdedefaults/wp.jpg".source = ../../wp.jpg;
+  home.file.".config/kdedefaults/wp.png".source = ../../wp.png;
   programs.plasma = {
     enable = true;
     workspace = {
@@ -13,7 +13,7 @@ username,
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
-      wallpaper = "/home/${username}/.config/kdedefaults/wp.jpg";
+      wallpaper = "/home/${username}/.config/kdedefaults/wp.png";
     };
 
     input.touchpads = [
