@@ -7,6 +7,7 @@
     ../../modules/system.nix
     ../../modules/ssh.nix
     ./hardware-configuration.nix
+    ./firewall.nix
   ];
 
   # use systemd-boot
@@ -17,7 +18,6 @@
     systemd-boot.enable = true;
   };
 
-  # pc hostname is decibel aka the prettiest character in the pokemon fan game pokemon reborn
   networking.hostName = "florinia";
 
   # enable networking
