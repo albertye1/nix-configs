@@ -50,6 +50,10 @@
 
   fonts = {
     packages = with pkgs; [
+      # woe is me
+      woeusb 
+      woeusb-ng
+
       # icon fonts
       material-design-icons
 

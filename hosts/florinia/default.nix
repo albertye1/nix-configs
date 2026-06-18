@@ -6,6 +6,7 @@
   imports = [
     ../../modules/system.nix
     ../../modules/ssh.nix
+    ../../modules/ddclient.nix
     ./hardware-configuration.nix
   ];
 
