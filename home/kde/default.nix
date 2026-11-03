@@ -4,7 +4,7 @@ pkgs,
 username,
 ...
 }: {
-  home.file.".config/kdedefaults/wp.png".source = ../../wp.png;
+  home.file.".config/kdedefaults/wp.png".source = ../../wp.jpg;
   programs.plasma = {
     enable = true;
     workspace = {

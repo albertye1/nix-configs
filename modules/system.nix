@@ -19,8 +19,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.docker.enable = true;
-
   # set time zone
   time.timeZone = "America/Los_Angeles";
 

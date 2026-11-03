@@ -15,8 +15,12 @@
     # images
     imv
     gimp
+    rapidraw
     # videos
     vlc
+    # cad (i guess this counts here)
+    freecad
+    orca-slicer
   ];
 
   programs = {

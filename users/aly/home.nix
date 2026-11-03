@@ -4,6 +4,7 @@
   imports = [
     ../../home/core.nix
 
+    ../../home/gnome
     ../../home/kde
     ../../home/shell
     ../../home/sway

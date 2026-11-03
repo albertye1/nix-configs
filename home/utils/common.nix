@@ -5,8 +5,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # zen browser
-    inputs.zen-browser.packages."${pkgs.system}".default
     claude-code
 
     # archives
@@ -80,7 +78,7 @@
 
     # social
     signal-desktop
-    discord-canary
+    discord
     spotify
 
     # photo stuff

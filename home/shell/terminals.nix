@@ -13,4 +13,5 @@ in
       window_padding_width = 5;
     };
   };
+  programs.ghostty.enable = true;
 }
