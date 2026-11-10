@@ -80,9 +80,6 @@
     signal-desktop
     discord
     spotify
-
-    # photo stuff
-    darktable
   ];
 
   programs = {
