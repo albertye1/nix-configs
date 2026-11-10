@@ -78,7 +78,7 @@
 
     # social
     signal-desktop
-    discord
+    discord-canary
     spotify
   ];
 
