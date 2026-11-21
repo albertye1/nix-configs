@@ -52,6 +52,9 @@
       woeusb 
       woeusb-ng
 
+      # app images
+      appimage-run
+
       # icon fonts
       material-design-icons
 

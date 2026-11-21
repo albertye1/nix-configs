@@ -28,14 +28,22 @@
     # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
 	# accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true; # Provides the `nvidia-offload` wrapper
+      };
+      # Ensure your PCI Bus IDs match your hardware (`lspci | grep -E "VGA|3D"`)
+      intelBusId = "PCI:0:2:0";
+      # amdgpuBusId = "PCI:5:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
   nixpkgs.config.nvidia.acceptLicense = true;
 }

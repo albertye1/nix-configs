@@ -7,8 +7,16 @@
     ../../modules/system.nix
     ../../modules/ssh.nix
     ../../modules/ddclient.nix
+    ../../modules/git-deploy-watcher.nix
     ./hardware-configuration.nix
   ];
+
+  virtualisation.docker.enable = true;
+
+  services.gitDeployWatcher = {
+    enable = true;
+    user = "aly";
+  };
 
   # use systemd-boot
   boot.loader = {
