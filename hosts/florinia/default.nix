@@ -8,6 +8,7 @@
     ../../modules/ssh.nix
     ../../modules/git-deploy-watcher.nix
     ./hardware-configuration.nix
+    ./firewall.nix
   ];
 
   virtualisation.docker.enable = true;
@@ -25,7 +26,6 @@
     systemd-boot.enable = true;
   };
 
-  # pc hostname is decibel aka the prettiest character in the pokemon fan game pokemon reborn
   networking.hostName = "florinia";
 
   # enable networking
