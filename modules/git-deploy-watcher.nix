@@ -44,13 +44,15 @@ in {
       serviceConfig = {
         Type = "simple";
         User = cfg.user;
-        WorkingDirectory = "%I";
+        # %I/%i specifier expansion strips the leading "/" from a path-escaped
+        # instance name and does not restore it, so it must be added back here.
+        WorkingDirectory = "/%I";
         Environment = [
           "HOME=/home/${cfg.user}"
           "WATCH_INTERVAL=${toString cfg.interval}"
         ];
         StateDirectory = "git-deploy-watcher/%i";
-        ExecStart = "${daemon}/bin/git-deploy-watcher-daemon %I";
+        ExecStart = "${daemon}/bin/git-deploy-watcher-daemon /%I";
         Restart = "on-failure";
         RestartSec = "30s";
       };
