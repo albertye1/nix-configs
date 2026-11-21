@@ -78,9 +78,6 @@
 
   # programs.dconf.enable = true;
 
-  # don't need a firewall as end user
-  networking.firewall.enable = false;
-
   # ssh settings; no root login or password auth
   services.openssh = {
     enable = true;
