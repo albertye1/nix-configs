@@ -5,8 +5,6 @@
 }: {
   imports = [
     ../../modules/system.nix
-    # pc runs sway
-    ../../modules/sway.nix
     # pc also runs kde
     ../../modules/kde.nix
     # pc contains nvidia gpu
@@ -23,7 +21,6 @@
     systemd-boot.enable = true;
   };
 
-  # pc hostname is decibel aka the prettiest character in the pokemon fan game pokemon reborn
   networking.hostName = "decibel";
 
   # enable networking

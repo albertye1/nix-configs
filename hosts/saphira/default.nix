@@ -5,10 +5,7 @@
 }: {
   imports = [
     ../../modules/system.nix
-    # pc runs sway
-    ../../modules/sway.nix
-    # pc also runs kde
-    ../../modules/kde.nix
+    ../../modules/gnome.nix
     # pc hardware settings
     ./hardware-configuration.nix
   ];

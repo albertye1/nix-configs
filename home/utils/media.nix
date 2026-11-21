@@ -14,6 +14,8 @@
     playerctl
     # images
     imv
+    gimp
+    rapidraw
     # videos
     vlc
   ];

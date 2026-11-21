@@ -19,8 +19,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.docker.enable = true;
-
   # set time zone
   time.timeZone = "America/Los_Angeles";
 
@@ -50,6 +48,13 @@
 
   fonts = {
     packages = with pkgs; [
+      # woe is me
+      woeusb 
+      woeusb-ng
+
+      # app images
+      appimage-run
+
       # icon fonts
       material-design-icons
 
