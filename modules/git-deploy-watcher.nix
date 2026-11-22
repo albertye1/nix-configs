@@ -9,7 +9,7 @@ with lib; let
 
   daemon = pkgs.writeShellApplication {
     name = "git-deploy-watcher-daemon";
-    runtimeInputs = [pkgs.git pkgs.docker pkgs.jq pkgs.coreutils];
+    runtimeInputs = [pkgs.git pkgs.docker pkgs.jq pkgs.coreutils pkgs.openssh];
     text = builtins.readFile ./scripts/git-deploy-watcher-daemon.sh;
   };
 

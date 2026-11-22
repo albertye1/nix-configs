@@ -33,8 +33,10 @@ while true; do
     problems+=("directory not writable by this user")
   fi
 
-  if [ "${#problems[@]}" -eq 0 ] && ! git -C "$deploy_path" fetch --quiet; then
-    problems+=("git fetch failed (check remote/credentials)")
+  if [ "${#problems[@]}" -eq 0 ]; then
+    if ! fetch_err="$(git -C "$deploy_path" fetch --quiet 2>&1)"; then
+      problems+=("git fetch failed: $(printf '%s' "$fetch_err" | tr '\n' ' ')")
+    fi
   fi
 
   if [ "${#problems[@]}" -eq 0 ] && ! docker info >/dev/null 2>&1; then
@@ -49,11 +51,11 @@ while true; do
     remote_rev="$(git -C "$deploy_path" rev-parse '@{u}' 2>/dev/null || echo "$local_rev")"
 
     if [ "$local_rev" != "$remote_rev" ]; then
-      if git -C "$deploy_path" pull && (cd "$deploy_path" && docker compose up --build -d); then
+      if deploy_err="$( { git -C "$deploy_path" pull && (cd "$deploy_path" && docker compose up --build -d); } 2>&1)"; then
         last_update="$(date -Iseconds)"
         write_status true "updated to $remote_rev" "$last_update"
       else
-        write_status true "update to $remote_rev failed during pull/redeploy" "$last_update"
+        write_status true "update to $remote_rev failed: $(printf '%s' "$deploy_err" | tr '\n' ' ')" "$last_update"
       fi
     else
       write_status true "up to date ($local_rev)" "$last_update"
